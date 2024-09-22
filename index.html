@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programming Income</title>
+
+    <!-- Cdn DaisyUI -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- font awesome cdn -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+
+    <div class="bg-slate-100 w-96 py-2 mx-auto rounded-md mt-4 px-3 shadow-lg">
+        <h1 class="text-xl font-bold pt-2"><i class="fa-solid fa-laptop-file text-violet-400"></i> Programmer Expenses
+            Assistant</h1>
+        <div class="flex justify-between gap-5 mt-4">
+            <button id="assistant-tab"
+                class="btn w-40 bg-gradient-to-r from-blue-500 to-violet-500 text-white">Assistant</button>
+            <button id="history-tab" class="btn w-40">History</button>
+        </div>
+
+        <!-- form section -->
+        <div id="form section">
+            <div class="grid grid-cols-2 gap-3 mt-5">
+
+
+                <div class=" grid col-span-2">
+                    <label for="">Income <i class="fa-solid fa-sack-dollar"></i></label>
+                    <input id="income-input" class="py-2 px-2 bg-transparent border shadow-sm rounded-md "
+                         name="" id="" placeholder="Enter Income">
+
+                    <p id="income-error" class="text-red-500 text-sm mt-1 hidden"><i class="fa-solid fa-triangle-exclamation"></i> Invalid Input</p>
+
+                    
+                </div>
+
+
+                <div class="col-span-1">
+                    <label for="">Software <i class="fa-solid fa-laptop"></i></label>
+                    <input id="software-input" class="py-2 px-2 bg-transparent border shadow-sm rounded-md w-44"
+                        type="number" id="" placeholder="Software cost">
+
+                        <p id="software-error" class="text-red-500 text-sm mt-1 hidden"><i class="fa-solid fa-triangle-exclamation"></i> Invalid Input</p>
+                </div>
+
+
+
+                <div class="col-span-1">
+                    <label for="">Courses <i class="fa-solid fa-book-atlas"></i></label>
+                    <input id="courses-input" class="py-2 px-2 bg-transparent border shadow-sm rounded-md w-44"
+                        type="number" name="" id="" placeholder="Courses cost">
+
+                        <p id="courses-error" class="text-red-500 text-sm mt-1 hidden"><i class="fa-solid fa-triangle-exclamation"></i> Invalid Input</p>
+                </div>
+
+                <div class="col-span-1">
+                    <label for="">Internet <i class="fa-solid fa-globe"></i></label>
+                    <input id="internet-input" class="py-2 px-2 bg-transparent border shadow-sm rounded-md w-44"
+                        type="number" name="" id="" placeholder="Internet cost">
+
+                        <p id="internet-error" class="text-red-500 text-sm mt-1 hidden"><i class="fa-solid fa-triangle-exclamation"></i> Invalid Input</p>
+                </div>
+            </div>
+
+
+            <div>
+                <button id="calculate-btn"
+                    class="w-full btn mt-4 bg-gradient-to-r from-violet-500 to-fuchsia-500 text-white">Calculate</button>
+
+                <label for="">Saving ( % ) <i class="fa-solid fa-sack-xmark mt-4"></i></label>
+                <input id="savings" class="py-2 px-2 bg-transparent border shadow-sm rounded-md w-full " type="number"
+                    name="" id="" placeholder="Savings(%)">
+
+                <button id="savings-btn"
+                    class="w-full btn mt-4 bg-gradient-to-r from-fuchsia-500 to-violet-500 text-white">Calculate
+                    Savings</button>
+
+                    <p id="logic-error" class="text-red-500 text-sm mt-1 hidden font-semibold"><i class="fa-solid fa-triangle-exclamation"></i> Total Expenses Cannot exceed your income!</p>
+            </div>
+
+        </div>
+
+
+
+        <!-- result summary -->
+        <section id="result" class="bg-white hidden shadow-md rounded-md mt-5  ">
+            <h1 class="text-xl font-bold py-4 text-center text-violet-400">Result Summary</h1>
+            <div class="  grid grid-cols-2 px-3  gap-2 py-5">
+                <div class="col-span-1 border-l-4 border-red-400 px-2 shadow-md rounded-md py-3">
+                    <h1 class="text-gray-500 font-semibold">Total Expenses:</h1>
+                    $<span id="totalexpenses" class="font-bold">00</span>
+                </div>
+                <div class="col-span-1 border-l-4 border-blue-400 px-2 shadow-md rounded-md py-3">
+                    <h1 class="text-gray-500 font-bold">Balance:</h1>
+                    $<span id="balanceelement" class="font-bold">00</span>
+                </div>
+                <div class="col-span-1 border-l-4 border-violet-400 px-2 shadow-md rounded-md py-3">
+                    <h1 class="text-gray-500 font-bold">Savings Amount:</h1>
+                    $<span id="savings-Amount" class="font-bold">00</span>
+                </div>
+                <div class="col-span-1 border-l-4 border-green-400 px-2 shadow-md rounded-md py-3">
+                    <h1 class="text-gray-500 font-bold">Remaning Balance</h1>
+                    $<span id="remaining-balance" class="font-bold">00</span>
+                </div>
+            </div>
+        </section>
+
+
+
+        <!-- expenses history -->
+        <div id="expenses-history" class=" hidden rounded-md shadow-sm mt-5 py-3">
+            <div>
+                <h1 class="text-xl font-bold text-violet-400 text-center"><i class="fa-regular fa-clock"></i> Expenses
+                    History</h1>
+            </div>
+            <div id="history-list" class="mt-2 grid grid-cols-2 gap-2">
+
+            </div>
+
+        </div>
+    </div>
+
+    <script src="./inedx.js"></script>
+
+</body>
+
+</html>
